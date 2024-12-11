@@ -35,7 +35,7 @@ pipeline {
       steps {
         script {
           sh '''
-	    kubectl apply -f manifest-java-app.yaml
+	    kubectl rollout restart deployment/dedi-java-app-deploy
           '''
         }
       }
