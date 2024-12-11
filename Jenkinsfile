@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/deditriyadibarnawan69/dedi-java-app.git'
+        git 'https://github.com/deditriyadibarnawan69/dedi-java-app.git', branch: 'main', credentialsId: 'token-github'
       }
     }
     stage('Build image') {
