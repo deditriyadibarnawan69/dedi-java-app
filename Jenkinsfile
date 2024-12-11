@@ -31,10 +31,12 @@ pipeline {
         }
       }
     }
-    stage('Deploying React.js container to Kubernetes') {
+    stage('Deploying container to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "manifest-java-app.yaml")
+          sh '''
+	    kubectl apply -f manifest-java-app.yaml
+          '''
         }
       }
     }
