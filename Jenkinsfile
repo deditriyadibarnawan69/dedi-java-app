@@ -53,16 +53,16 @@ pipeline {
             }
         }
   post {
-        always {
-            // Membersihkan file kubeconfig setelah pipeline selesai
-            sh "rm -f ${KUBECONFIG}"
-        }
-        success {
-            echo 'Deployment successful!'
-        }
-        failure {
-            echo 'Deployment failed!'
-        }
+    always {
+        // Membersihkan file kubeconfig setelah pipeline selesai
+        sh "rm -f ${KUBECONFIG}"
+      }
+      success {
+          echo 'Deployment successful!'
+      }
+      failure {
+          echo 'Deployment failed!'
+      }
     }
     // stage('Deploying container to Kubernetes') {
     //   steps {
