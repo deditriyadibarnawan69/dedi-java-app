@@ -2,12 +2,9 @@ pipeline {
   environment {
     dockerimagename = "brdcookies6969/dedi-java-app"
     dockerImage = ""
+    KUBECONFIG = "${WORKSPACE}/kubeconfig"
   }
   agent any
-  environment {
-        // Path kubeconfig di workspace Jenkins
-        KUBECONFIG = "${WORKSPACE}/kubeconfig"
-    }
   stages {
     stage('Checkout Source') {
       steps {
@@ -47,7 +44,7 @@ pipeline {
                 }
             }
         }
-      stage('Deploy to Kubernetes') {
+    stage('Deploy to Kubernetes') {
             steps {
                 // Deploy aplikasi ke Kubernetes dengan kubectl
                 sh """
@@ -55,7 +52,7 @@ pipeline {
                 """
             }
         }
-      post {
+  post {
         always {
             // Membersihkan file kubeconfig setelah pipeline selesai
             sh "rm -f ${KUBECONFIG}"
