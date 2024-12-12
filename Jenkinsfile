@@ -48,7 +48,7 @@ pipeline {
             steps {
                 // Deploy aplikasi ke Kubernetes dengan kubectl
                 sh """
-                kubectl --kubeconfig=${KUBECONFIG} apply -f deployment.yaml
+                kubectl --kubeconfig=${KUBECONFIG} apply -f manifest-java-app.yaml
                 """
             }
         }
