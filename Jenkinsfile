@@ -48,7 +48,7 @@ pipeline {
             steps {
                 // Deploy aplikasi ke Kubernetes dengan kubectl
                 sh """
-                kubectl --kubeconfig=${KUBECONFIG} apply -f manifest-java-app.yaml
+                kubectl --kubeconfig=${KUBECONFIG} rollout restart deployment/dedi-java-app-deploy
                 """
             }
         }
