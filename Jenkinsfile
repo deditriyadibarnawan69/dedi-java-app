@@ -52,6 +52,17 @@ pipeline {
                 """
             }
         }
+  
+    // stage('Deploying container to Kubernetes') {
+    //   steps {
+    //     script {
+    //       sh '''
+	  //   kubectl rollout restart deployment/dedi-java-app-deploy
+    //       '''
+    //     }
+    //   }
+    // }
+  }
   post {
     always {
         // Membersihkan file kubeconfig setelah pipeline selesai
@@ -64,14 +75,4 @@ pipeline {
           echo 'Deployment failed!'
       }
     }
-    // stage('Deploying container to Kubernetes') {
-    //   steps {
-    //     script {
-    //       sh '''
-	  //   kubectl rollout restart deployment/dedi-java-app-deploy
-    //       '''
-    //     }
-    //   }
-    // }
-  }
 }
