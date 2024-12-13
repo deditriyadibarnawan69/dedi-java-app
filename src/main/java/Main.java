@@ -18,7 +18,7 @@ public class Main {
     // Handler untuk permintaan HTTP
     static class HelloHandler implements HttpHandler {
         public void handle(HttpExchange exchange) throws IOException {
-            String response = "Hello, dedi belajar Kubernetes : v.0.3!";
+            String response = "Hello, dedi belajar Kubernetes : v.0.4!";
             exchange.sendResponseHeaders(200, response.getBytes().length);
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
