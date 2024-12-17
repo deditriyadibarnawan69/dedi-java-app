@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerimagename = "brdcookies6969/dedi-java-app"
+    DOCKER_IMAGE = 'brdcookies6969/dedi-java-app'
     dockerImage = ""
     KUBERNETES_NAMESPACE = 'dedi-namespace'
   }
