@@ -11,24 +11,23 @@ pipeline {
 	      checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'token-key-github', url: 'https://github.com/deditriyadibarnawan69/dedi-java-app.git']])
       }
     }
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build dockerimagename
+    stage('Build Docker Image') {
+        steps {
+            script {
+                // Build Docker image
+                sh '''
+                    docker build -t $DOCKER_IMAGE .
+                '''
+            }
         }
-      }
     }
-    stage('Pushing Image') {
-      environment {
-          registryCredential = 'dockerhub-credentials'
-           }
-      steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
-          }
+    stage('Docker Push') {
+        steps {
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+            sh 'docker push $DOCKER_IMAGE'
+            }
         }
-      }
     }
     
     stage('Deploy again to Kubernetes') {
