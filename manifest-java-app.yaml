@@ -41,7 +41,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: dedi-java-app-mini-bootcamp.brd.my.id
+  - host: dedi-java-app-02.brd.my.id
     http:
       paths:
         - path: /
