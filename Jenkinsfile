@@ -53,14 +53,11 @@ pipeline {
                 }
             }
         }
-    }
-    post {
+  } 
+  post {
         always {
             // Clean up if necessary, for example, remove the Docker image locally
             sh 'docker rmi $DOCKER_IMAGE'
         }
     }
-    
-
-  }  
 }
