@@ -29,6 +29,7 @@ spec:
       port: 80
       protocol: TCP
       targetPort: 8888
+  type: LoadBalancer
   selector:
     name: site-nginx-frontend
 ---
