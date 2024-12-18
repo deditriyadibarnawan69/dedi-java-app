@@ -35,6 +35,7 @@ pipeline {
                 script {
                     // Deploy to Kubernetes using kubectl
                     sh '''
+                        kubectl delete -f manifest-java-app.yaml -n $KUBERNETES_NAMESPACE
                         kubectl apply -f manifest-java-app.yaml -n $KUBERNETES_NAMESPACE
                     '''
                 }
